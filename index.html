@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,78 +8,89 @@
 <style>
 body {
   margin: 0;
-  font-family: 'Georgia', serif;
-  background: #fff;
-  color: #222;
+  font-family: Arial, sans-serif;
+  background: #f6f2ec;
 }
 
 /* NAVBAR */
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 20px 30px;
-  border-bottom: 1px solid #eee;
+  padding: 15px 20px;
+  background: white;
+  position: sticky;
+  top: 0;
 }
 
 .logo {
   font-weight: bold;
-  font-size: 20px;
-  letter-spacing: 2px;
 }
 
 /* HERO */
 .hero {
-  height: 90vh;
-  background: url('https://images.unsplash.com/photo-1495121605193-b116b5b09a27') center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: url('https://images.unsplash.com/photo-1520974735194-6d9e7c6d1c50') center/cover;
   color: white;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 48px;
-}
-
-.hero p {
-  font-size: 18px;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 25px;
-  background: #000;
-  color: #fff;
-  text-decoration: none;
-}
-
-/* SECTION */
-.section {
   padding: 60px 20px;
   text-align: center;
 }
 
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 15px;
+.hero h1 {
+  font-size: 28px;
 }
 
-.gallery img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
+/* SECTION */
+.section {
   padding: 20px;
-  background: #000;
+}
+
+.section h2 {
+  text-align: center;
+}
+
+/* CATEGORIES */
+.categories {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.cat {
+  min-width: 120px;
+  text-align: center;
+}
+
+.cat img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* PRODUCTS */
+.products {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+}
+
+.product {
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  background: black;
   color: white;
+  padding: 10px;
+  margin-top: 10px;
+  text-decoration: none;
+  border-radius: 6px;
 }
 </style>
 </head>
@@ -88,36 +98,55 @@ footer {
 <body>
 
 <nav>
-  <div class="logo">ARITVA 👗</div>
+  <div class="logo">Aritva 👗</div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <div>
-    <h1>Timeless Elegance</h1>
-    <p>Custom couture by Neha</p>
-    <a class="btn" href="#contact">Order Now</a>
+  <h1>Everyday Kurtis, On Repeat</h1>
+  <p>Soft fits. Breathable fabrics.</p>
+</div>
+
+<!-- CATEGORIES -->
+<div class="section">
+  <h2>Shop By Category</h2>
+  <div class="categories">
+    <div class="cat">
+      <img src="https://via.placeholder.com/150">
+      <p>College Wear</p>
+    </div>
+    <div class="cat">
+      <img src="https://via.placeholder.com/150">
+      <p>Office Wear</p>
+    </div>
+    <div class="cat">
+      <img src="https://via.placeholder.com/150">
+      <p>Daily Wear</p>
+    </div>
   </div>
 </div>
 
+<!-- PRODUCTS -->
 <div class="section">
-  <h2>About</h2>
-  <p>At Aritva, we design custom outfits tailored perfectly to your style and comfort.</p>
-</div>
+  <h2>Best Sellers</h2>
+  <div class="products">
 
-<div class="section gallery">
-  <img src="https://images.unsplash.com/photo-1520974735194-6d9e7c6d1c50">
-  <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd53">
-  <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d">
-</div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300">
+      <p>Black Kurti</p>
+      <p>₹899</p>
+      <a class="btn" href="https://wa.me/91XXXXXXXXXX">Order</a>
+    </div>
 
-<div class="section" id="contact">
-  <h2>Order Now</h2>
-  <a class="btn" href="https://wa.me/91XXXXXXXXXX">Chat on WhatsApp</a>
-</div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300">
+      <p>Purple Kurti</p>
+      <p>₹999</p>
+      <a class="btn" href="https://wa.me/91XXXXXXXXXX">Order</a>
+    </div>
 
-<footer>
-  © Aritva | Crafted with passion
-</footer>
+  </div>
+</div>
 
 </body>
 </html>
