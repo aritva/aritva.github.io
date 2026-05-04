@@ -131,15 +131,18 @@ document.getElementById("search").addEventListener("input",(e)=>{
 });
 
 // CART VIEW
-document.getElementById("cartIcon").addEventListener("click",()=>{
+  document.getElementById("cartIcon").addEventListener("click",()=>{
   if(cart.length===0){
-    alert("Cart is empty");
+    alert("🛒 Cart is empty");
   }else{
-    let msg="Your Cart:\n";
-    cart.forEach(i=>msg+=`${i.name} - ₹${i.price}\n`);
-    alert(msg);
+    // save cart (important)
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // redirect to checkout page
+    window.location.href = "checkout.html";
   }
 });
+  
 
 // SCROLL
 function scrollToProducts(){
