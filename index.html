@@ -8,23 +8,40 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #f6f2ec;
 }
 
-/* NAV */
+/* NAVBAR */
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 12px;
   background: white;
+  position: sticky;
+  top: 0;
 }
 
-.cart-box {
-  background: white;
+.logo {
+  font-weight: bold;
+}
+
+/* SEARCH */
+.search {
   padding: 10px;
-  position: sticky;
-  bottom: 0;
+  width: 90%;
+  margin: 10px auto;
+  display: block;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+/* HERO */
+.hero {
+  background: url('https://images.unsplash.com/photo-1495121605193-b116b5b09a27') center/cover;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
 }
 
 /* PRODUCTS */
@@ -37,8 +54,9 @@ nav {
 
 .product {
   background: white;
-  padding: 10px;
   border-radius: 10px;
+  padding: 10px;
+  position: relative;
 }
 
 .product img {
@@ -46,14 +64,24 @@ nav {
   border-radius: 10px;
 }
 
-button {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: none;
+/* HEART */
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+}
+
+/* BUTTON */
+.btn {
+  display: block;
   background: black;
   color: white;
+  text-align: center;
+  padding: 8px;
+  text-decoration: none;
   border-radius: 5px;
+  margin-top: 5px;
 }
 </style>
 </head>
@@ -61,55 +89,36 @@ button {
 <body>
 
 <nav>
-  <h3>Aritva 👗</h3>
-  <div>🛒 Cart: <span id="count">0</span></div>
+  <div class="logo">Aritva 👗</div>
+  <div>🛒</div>
 </nav>
+
+<input class="search" placeholder="Search kurtis, dresses..." />
+
+<div class="hero">
+  <h2>New Arrivals</h2>
+  <p>Custom stitched fashion</p>
+</div>
 
 <div class="products">
 
   <div class="product">
+    <span class="heart">♡</span>
     <img src="https://via.placeholder.com/300">
     <p>Floral Kurti</p>
     <p>₹899</p>
-    <button onclick="addToCart(899)">Add to Cart</button>
+    <a class="btn" href="https://wa.me/91XXXXXXXXXX">Buy</a>
   </div>
 
   <div class="product">
+    <span class="heart">♡</span>
     <img src="https://via.placeholder.com/300">
     <p>Office Kurti</p>
     <p>₹999</p>
-    <button onclick="addToCart(999)">Add to Cart</button>
+    <a class="btn" href="https://wa.me/91XXXXXXXXXX">Buy</a>
   </div>
 
 </div>
-
-<!-- CART -->
-<div class="cart-box">
-  <p>Total: ₹<span id="total">0</span></p>
-  
-  <!-- PAYMENT -->
-  <a href="https://rzp.io/l/YOURLINK">
-    <button>Pay Now</button>
-  </a>
-
-  <!-- WHATSAPP -->
-  <a href="https://wa.me/91XXXXXXXXXX">
-    <button>Order on WhatsApp</button>
-  </a>
-</div>
-
-<script>
-let total = 0;
-let count = 0;
-
-function addToCart(price) {
-  total += price;
-  count++;
-
-  document.getElementById("total").innerText = total;
-  document.getElementById("count").innerText = count;
-}
-</script>
 
 </body>
 </html>
