@@ -1,33 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Product</title>
-<style>
-body{font-family:Arial;padding:20px}
-img{width:100%;max-width:300px}
-select,input,button{width:100%;margin-top:10px;padding:10px}
-</style>
+  <meta charset="UTF-8">
+  <title>Product Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #faf8f6;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 15px;
+    }
+
+    h2 {
+      margin: 10px 0;
+    }
+
+    h3 {
+      color: #bf7b4a;
+    }
+
+    select, input, button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+
+    button {
+      background: black;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #bf7b4a;
+    }
+  </style>
 </head>
 
 <body>
 
-<div id="productDetails"></div>
+<div class="container">
+  <img id="productImg">
+  <h2 id="productName"></h2>
+  <h3 id="productPrice"></h3>
 
-<script>
-
-// get product
-const products = JSON.parse(localStorage.getItem("products")) || [];
-const id = localStorage.getItem("selectedProduct");
-
-const product = products.find(p => p.id == id);
-
-const container = document.getElementById("productDetails");
-
-container.innerHTML = `
-  <img src="${product.img}">
-  <h2>${product.name}</h2>
-  <h3>₹${product.price}</h3>
-
+  <!-- SIZE -->
   <select id="size">
     <option value="">Select Size</option>
     <option>S</option>
@@ -36,17 +72,36 @@ container.innerHTML = `
     <option>XL</option>
   </select>
 
+  <!-- QUANTITY -->
   <input type="number" id="qty" value="1" min="1">
 
+  <!-- ADD TO CART -->
   <button onclick="addToCart()">Add to Cart</button>
-`;
+</div>
 
+<script>
+
+// GET DATA FROM LOCAL STORAGE
+const products = JSON.parse(localStorage.getItem("products")) || [];
+const id = localStorage.getItem("selectedProduct");
+
+// FIND PRODUCT
+const product = products.find(p => p.id == id);
+
+// DISPLAY PRODUCT
+document.getElementById("productImg").src = product.img;
+document.getElementById("productName").innerText = product.name;
+document.getElementById("productPrice").innerText = "₹" + product.price;
+
+
+// ADD TO CART FUNCTION
 function addToCart(){
+
   const size = document.getElementById("size").value;
   const qty = document.getElementById("qty").value;
 
   if(size === ""){
-    alert("Select size");
+    alert("Please select size");
     return;
   }
 
@@ -61,6 +116,7 @@ function addToCart(){
   localStorage.setItem("cart", JSON.stringify(cart));
 
   alert("Added to cart");
+
 }
 
 </script>
