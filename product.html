@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product</title>
+<style>
+body{font-family:Arial;padding:20px}
+img{width:100%;max-width:300px}
+select,input,button{width:100%;margin-top:10px;padding:10px}
+</style>
+</head>
+
+<body>
+
+<div id="productDetails"></div>
+
+<script>
+
+// get product
+const products = JSON.parse(localStorage.getItem("products")) || [];
+const id = localStorage.getItem("selectedProduct");
+
+const product = products.find(p => p.id == id);
+
+const container = document.getElementById("productDetails");
+
+container.innerHTML = `
+  <img src="${product.img}">
+  <h2>${product.name}</h2>
+  <h3>₹${product.price}</h3>
+
+  <select id="size">
+    <option value="">Select Size</option>
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+  <input type="number" id="qty" value="1" min="1">
+
+  <button onclick="addToCart()">Add to Cart</button>
+`;
+
+function addToCart(){
+  const size = document.getElementById("size").value;
+  const qty = document.getElementById("qty").value;
+
+  if(size === ""){
+    alert("Select size");
+    return;
+  }
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push({
+    ...product,
+    size: size,
+    qty: parseInt(qty)
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert("Added to cart");
+}
+
+</script>
+
+</body>
+</html>
