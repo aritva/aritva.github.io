@@ -20,6 +20,7 @@ nav {
   background: white;
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 
 .logo {
@@ -30,7 +31,7 @@ nav {
 .hero {
   background: url('https://images.unsplash.com/photo-1520974735194-6d9e7c6d1c50') center/cover;
   color: white;
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
 }
 
@@ -45,6 +46,7 @@ nav {
 
 .section h2 {
   text-align: center;
+  margin-bottom: 15px;
 }
 
 /* CATEGORIES */
@@ -68,7 +70,7 @@ nav {
 .products {
   display: grid;
   grid-template-columns: repeat(2,1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
 .product {
@@ -82,6 +84,25 @@ nav {
   border-radius: 10px;
 }
 
+.price {
+  font-weight: bold;
+}
+
+/* FEATURES */
+.features {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 15px;
+  text-align: center;
+}
+
+.feature {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* BUTTON */
 .btn {
   display: block;
   text-align: center;
@@ -92,22 +113,33 @@ nav {
   text-decoration: none;
   border-radius: 6px;
 }
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+}
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="logo">Aritva 👗</div>
+  <div>Custom Couture</div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
   <h1>Everyday Kurtis, On Repeat</h1>
-  <p>Soft fits. Breathable fabrics.</p>
+  <p>Soft fits. Breathable fabrics. Made for you.</p>
 </div>
 
-<!-- CATEGORIES -->
+<!-- CATEGORY -->
 <div class="section">
   <h2>Shop By Category</h2>
   <div class="categories">
@@ -117,11 +149,15 @@ nav {
     </div>
     <div class="cat">
       <img src="https://via.placeholder.com/150">
-      <p>Office Wear</p>
+      <p>Office Casuals</p>
     </div>
     <div class="cat">
       <img src="https://via.placeholder.com/150">
       <p>Daily Wear</p>
+    </div>
+    <div class="cat">
+      <img src="https://via.placeholder.com/150">
+      <p>Under ₹999</p>
     </div>
   </div>
 </div>
@@ -133,20 +169,57 @@ nav {
 
     <div class="product">
       <img src="https://via.placeholder.com/300">
-      <p>Black Kurti</p>
-      <p>₹899</p>
-      <a class="btn" href="https://wa.me/91XXXXXXXXXX">Order</a>
+      <p>Black Sleeveless Kurti</p>
+      <p class="price">₹899</p>
+      <a class="btn" href="https://wa.me/91XXXXXXXXXX">Order Now</a>
     </div>
 
     <div class="product">
       <img src="https://via.placeholder.com/300">
       <p>Purple Kurti</p>
-      <p>₹999</p>
-      <a class="btn" href="https://wa.me/91XXXXXXXXXX">Order</a>
+      <p class="price">₹999</p>
+      <a class="btn" href="https://wa.me/91XXXXXXXXXX">Order Now</a>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/300">
+      <p>Floral Kurti</p>
+      <p class="price">₹799</p>
+      <a class="btn" href="https://wa.me/91XXXXXXXXXX">Order Now</a>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/300">
+      <p>Casual Cotton Kurti</p>
+      <p class="price">₹899</p>
+      <a class="btn" href="https://wa.me/91XXXXXXXXXX">Order Now</a>
     </div>
 
   </div>
 </div>
+
+<!-- FEATURES -->
+<div class="section">
+  <h2>Why Choose Aritva?</h2>
+  <div class="features">
+    <div class="feature">🌿 Breathable Fabrics</div>
+    <div class="feature">💖 Comfortable Fits</div>
+    <div class="feature">🔁 Easy Returns</div>
+    <div class="feature">✨ Handmade Quality</div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section">
+  <h2>Order via WhatsApp</h2>
+  <p>Click below to place your custom order</p>
+  <a class="btn" href="https://wa.me/91XXXXXXXXXX">Chat Now</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Aritva | Designed by Neha
+</footer>
 
 </body>
 </html>
