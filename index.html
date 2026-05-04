@@ -90,6 +90,12 @@ const products=[
 // CART
 let cart=JSON.parse(localStorage.getItem("cart"))||[];
 
+  const products = [
+  // your product objects here
+];
+
+// ✅ ADD THIS LINE RIGHT HERE
+localStorage.setItem("products", JSON.stringify(products));
 // RENDER PRODUCTS
 function render(list){
   const grid=document.getElementById("productGrid");
@@ -109,6 +115,8 @@ function render(list){
 </div>
 `;
   
+
+// then render
 render(products);
   function openProduct(id){
   localStorage.setItem("selectedProduct", id);
@@ -141,6 +149,7 @@ function addToCart(id){
 
   alert(`Added ${product.name} (${size}) x${qty}`);
 }
+  
 // UPDATE COUNT
 function updateCart(){
   document.getElementById("cartCount").innerText=cart.length;
