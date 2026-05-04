@@ -93,25 +93,30 @@ let cart=JSON.parse(localStorage.getItem("cart"))||[];
 // ✅ ADD THIS LINE RIGHT HERE
 localStorage.setItem("products", JSON.stringify(products));
 // RENDER PRODUCTS
+
 function render(list){
-  const grid=document.getElementById("productGrid");
-  grid.innerHTML += `
-<div class="card" onclick="openProduct(${p.id})">
-  <img src="${p.img}">
-  
-  <div class="info">
-    <h4>${p.name}</h4>
+  const grid = document.getElementById("productGrid");
 
-    <div class="price">
-      ₹${p.price}
-    </div>
+  grid.innerHTML = ""; // clear previous
 
-    <div class="wishlist">❤️</div>
-  </div>
-</div>
-`;
-  
+  list.forEach(p => {
+    grid.innerHTML += `
+      <div class="card" onclick="openProduct(${p.id})">
+        <img src="${p.img}">
 
+        <div class="info">
+          <h4>${p.name}</h4>
+
+          <div class="price">
+            ₹${p.price}
+          </div>
+
+          <div class="wishlist">❤️</div>
+        </div>
+      </div>
+    `;
+  });
+}
 // then render
 render(products);
   function openProduct(id){
