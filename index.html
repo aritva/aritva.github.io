@@ -93,7 +93,17 @@ let cart=JSON.parse(localStorage.getItem("cart"))||[];
 // RENDER PRODUCTS
 function render(list){
   const grid=document.getElementById("productGrid");
-  
+  grid.innerHTML="";
+  list.forEach(p=>{
+    grid.innerHTML+=`
+    <div class="card">
+      <img src="${p.img}">
+      <div class="info">
+        <h4>${p.name}</h4>
+        <div class="price">₹${p.price} <span class="old">₹${p.old}</span></div>
+        <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
+      </div>
+    </div>`;
     grid.innerHTML += `
 <div class="card">
   <img src="${p.img}">
