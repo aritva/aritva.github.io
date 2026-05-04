@@ -93,30 +93,68 @@ let cart=JSON.parse(localStorage.getItem("cart"))||[];
 // RENDER PRODUCTS
 function render(list){
   const grid=document.getElementById("productGrid");
-  grid.innerHTML="";
-  list.forEach(p=>{
-    grid.innerHTML+=`
-    <div class="card">
-      <img src="${p.img}">
-      <div class="info">
-        <h4>${p.name}</h4>
-        <div class="price">₹${p.price} <span class="old">₹${p.old}</span></div>
-        <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
-      </div>
-    </div>`;
+  
+    grid.innerHTML += `
+<div class="card">
+  <img src="${p.img}">
+
+  <div class="info">
+    <h4>${p.name}</h4>
+
+    <div class="price">
+      ₹${p.price} <span class="old">₹${p.old}</span>
+    </div>
+
+    <!-- SIZE -->
+    <select id="size-${p.id}">
+      <option value="">Select Size</option>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+    </select>
+
+    <!-- QUANTITY -->
+    <input type="number" id="qty-${p.id}" value="1" min="1">
+
+    <!-- BUTTON -->
+    <button class="add-btn" onclick="addToCart(${p.id})">
+      Add to Cart
+    </button>
+
+  </div>
+</div>
+`;
   });
 }
 render(products);
 
 // ADD TO CART
 function addToCart(id){
-  const product=products.find(p=>p.id===id);
-  cart.push(product);
-  localStorage.setItem("cart",JSON.stringify(cart));
-  updateCart();
-  alert("Added to cart");
-}
+  const product = products.find(p => p.id === id);
 
+  const size = document.getElementById(`size-${id}`).value;
+  const qty = document.getElementById(`qty-${id}`).value;
+
+  if(!size){
+    alert("Please select size");
+    return;
+  }
+
+  const item = {
+    ...product,
+    size: size,
+    qty: parseInt(qty)
+  };
+
+  cart.push(item);
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  updateCart();
+
+  alert(`Added ${product.name} (${size}) x${qty}`);
+}
 // UPDATE COUNT
 function updateCart(){
   document.getElementById("cartCount").innerText=cart.length;
