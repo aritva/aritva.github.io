@@ -24,6 +24,25 @@ function placeOrder(){
   localStorage.removeItem("cart");
 }
 </script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
+<button onclick="payNow()">Pay Now</button>
+
+<script>
+function payNow(){
+  var options = {
+    key: "YOUR_KEY_HERE",
+    amount: 1000 * 100,
+    currency: "INR",
+    name: "Aritva",
+    description: "Order Payment",
+    handler: function () {
+      alert("Payment successful!");
+    }
+  };
+  var rzp = new Razorpay(options);
+  rzp.open();
+}
+</script>
 </body>
 </html>
