@@ -1,698 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Aritva | Trendy Women's Clothing</title>
-  <!-- Google Fonts & simple icons (Font Awesome via CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aritva | Women's Fashion</title>
 
-    body {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: #faf8f6;
-      color: #1e1e1e;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    /* Import modern font */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#faf8f6;color:#1e1e1e}
 
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #c0a080;
-      border-radius: 10px;
-    }
+/* NAVBAR */
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.logo{font-size:1.5rem;font-weight:700;color:#bf7b4a}
+.search-bar{flex:1;margin:0 20px;background:#f3f0ed;border-radius:30px;padding:8px 15px}
+.search-bar input{border:none;background:transparent;width:100%;outline:none}
+.icons{display:flex;gap:15px;position:relative}
+#cartCount{position:absolute;top:-8px;right:-8px;background:#bf7b4a;color:#fff;font-size:0.7rem;padding:3px 6px;border-radius:50%}
 
-    /* NAVBAR (elevated, sticky, with search + icons) */
-    .top-bar {
-      background: white;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 24px;
-      max-width: 1400px;
-      margin: 0 auto;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .logo-area {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-    .logo {
-      font-size: 1.9rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #bf7b4a, #9a5e38);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .logo-tag {
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: #b8734a;
-      background: #fef2e6;
-      padding: 2px 8px;
-      border-radius: 30px;
-    }
-    .search-bar {
-      flex: 1;
-      max-width: 500px;
-      background: #f3f0ed;
-      border-radius: 40px;
-      display: flex;
-      align-items: center;
-      padding: 8px 16px;
-      gap: 8px;
-    }
-    .search-bar i {
-      color: #8e7a6b;
-      font-size: 1rem;
-    }
-    .search-bar input {
-      background: transparent;
-      border: none;
-      outline: none;
-      width: 100%;
-      font-size: 0.9rem;
-      padding: 6px 0;
-      font-family: inherit;
-    }
-    .nav-icons {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-    .nav-icons i {
-      font-size: 1.4rem;
-      color: #2c2c2c;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .nav-icons i:hover {
-      color: #bf7b4a;
-    }
-    /* HERO CAROUSEL STYLE (modern full-width banner) */
-    .hero {
-      background: linear-gradient(97deg, #fae9dd 0%, #f4e2d4 100%);
-      margin: 10px 20px 20px 20px;
-      border-radius: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      padding: 30px 40px;
-      overflow: hidden;
-      position: relative;
-    }
-    .hero-content {
-      max-width: 450px;
-    }
-    .hero-badge {
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
-      display: inline-block;
-      padding: 5px 14px;
-      border-radius: 40px;
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      margin-bottom: 18px;
-    }
-    .hero h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
-      line-height: 1.2;
-      color: #2e241f;
-      margin-bottom: 15px;
-    }
-    .hero p {
-      font-size: 1rem;
-      color: #4f3e32;
-      margin-bottom: 28px;
-    }
-    .hero-btn {
-      background: #1e1e1e;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 40px;
-      color: white;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .hero-btn:hover {
-      background: #bf7b4a;
-      transform: scale(0.97);
-    }
-    .hero-image {
-      max-width: 280px;
-      border-radius: 28px;
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.2);
-    }
-    /* SECTION HEADINGS */
-    .section {
-      padding: 40px 24px 20px 24px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-    .section-header h2 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-      color: #2a241f;
-    }
-    .section-link {
-      color: #bf7b4a;
-      font-weight: 500;
-      font-size: 0.85rem;
-      text-decoration: none;
-      border-bottom: 1px solid #e2cfbf;
-    }
-    /* CATEGORIES - MYNTRA style pills + scroll */
-    .categories-scroll {
-      display: flex;
-      gap: 18px;
-      overflow-x: auto;
-      padding-bottom: 12px;
-      scrollbar-width: thin;
-    }
-    .cat-card {
-      min-width: 110px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .cat-card:hover {
-      transform: translateY(-5px);
-    }
-    .cat-img {
-      width: 100%;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 8px 14px rgba(0,0,0,0.05);
-      border: 2px solid white;
-      transition: all 0.2s;
-    }
-    .cat-card p {
-      margin-top: 12px;
-      font-weight: 500;
-      font-size: 0.85rem;
-      color: #2c2c2c;
-    }
-    /* PRODUCT GRID - 2 to 4 responsive (like ajio) */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 24px;
-    }
-    .product-card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-      cursor: pointer;
-      border: 1px solid #f1ece7;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 28px -12px rgba(0,0,0,0.12);
-    }
-    .product-img-wrapper {
-      position: relative;
-      overflow: hidden;
-      background: #f8f2ec;
-    }
-    .product-img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      transition: transform 0.4s;
-    }
-    .product-card:hover .product-img {
-      transform: scale(1.03);
-    }
-    .wishlist-icon {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: white;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      cursor: pointer;
-    }
-    .product-info {
-      padding: 14px 12px 16px;
-    }
-    .brand {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: #bf7b4a;
-      letter-spacing: 0.5px;
-    }
-    .product-title {
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin: 6px 0 4px;
-    }
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin: 8px 0;
-    }
-    .current-price {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #1e1e1e;
-    }
-    .old-price {
-      font-size: 0.8rem;
-      color: #999;
-      text-decoration: line-through;
-    }
-    .discount {
-      font-size: 0.75rem;
-      color: #2b7e3a;
-      font-weight: 600;
-    }
-    .btn-whatsapp {
-      display: block;
-      background: #25D366;
-      color: white;
-      text-align: center;
-      padding: 8px 0;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-top: 12px;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .btn-whatsapp:hover {
-      background: #128C7E;
-    }
-    /* FEATURE SECTION MODERN */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      background: #fff9f5;
-      padding: 30px 20px;
-      border-radius: 48px;
-      margin-top: 10px;
-    }
-    .feature-item {
-      text-align: center;
-      padding: 12px;
-    }
-    .feature-item i {
-      font-size: 2rem;
-      background: #f2e6dd;
-      padding: 14px;
-      border-radius: 50%;
-      color: #b2653a;
-    }
-    .feature-item h4 {
-      margin: 12px 0 6px;
-      font-weight: 600;
-    }
-    /* WhatsApp floating order area */
-    .contact-panel {
-      background: linear-gradient(115deg, #f7ede5, #fff4ed);
-      border-radius: 32px;
-      padding: 32px 28px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-    .big-wa-btn {
-      background: #25D366;
-      padding: 14px 32px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: white;
-      text-decoration: none;
-      transition: 0.2s;
-      box-shadow: 0 6px 18px rgba(37,211,102,0.3);
-    }
-    /* Footer */
-    footer {
-      background: #1d1b19;
-      color: #d9cdc2;
-      text-align: center;
-      padding: 32px 20px;
-      margin-top: 30px;
-      font-size: 0.85rem;
-    }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    .footer-links a {
-      color: #d9cdc2;
-      text-decoration: none;
-    }
-    /* responsive */
-    @media (max-width: 680px) {
-      .navbar {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 32px 20px;
-      }
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      .hero-image {
-        margin-top: 24px;
-        max-width: 220px;
-      }
-      .section-header h2 {
-        font-size: 1.5rem;
-      }
-      .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-      }
-    }
-  </style>
+/* HERO */
+.hero{display:flex;justify-content:space-between;align-items:center;padding:40px;background:#f4e2d4;border-radius:20px;margin:20px}
+.hero img{width:250px;border-radius:20px}
+.hero button{background:#1e1e1e;color:#fff;padding:10px 20px;border:none;border-radius:30px;cursor:pointer}
+
+/* GRID */
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;padding:20px}
+.card{background:#fff;border-radius:15px;overflow:hidden;transition:0.3s}
+.card:hover{transform:translateY(-5px)}
+.card img{width:100%;height:250px;object-fit:cover}
+.info{padding:10px}
+.price{font-weight:700}
+.old{text-decoration:line-through;color:#888;font-size:0.8rem}
+
+/* BUTTON */
+.add-btn{width:100%;margin-top:10px;padding:8px;border:none;background:#1e1e1e;color:#fff;border-radius:20px;cursor:pointer}
+.add-btn:hover{background:#bf7b4a}
+
+/* FOOTER */
+footer{text-align:center;padding:20px;background:#1d1b19;color:#fff;margin-top:20px}
+
+</style>
 </head>
+
 <body>
 
-<div class="top-bar">
-  <div class="navbar">
-    <div class="logo-area">
-      <span class="logo">A R I T V A</span>
-      <span class="logo-tag">WOMEN ETHNIC</span>
-    </div>
-    <div class="search-bar">
-      <i class="fas fa-search"></i>
-      <input type="text" placeholder="Search for kurtis, dresses, co-ord sets...">
-    </div>
-    <div class="nav-icons">
-      <i class="far fa-heart"></i>
-      <i class="far fa-user"></i>
-      <i class="fas fa-bag-shopping"></i>
-    </div>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">ARITVA</div>
+
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search products...">
+  </div>
+
+  <div class="icons">
+    <i class="fas fa-heart"></i>
+    <i class="fas fa-user"></i>
+    <i class="fas fa-bag-shopping" id="cartIcon"></i>
+    <span id="cartCount">0</span>
   </div>
 </div>
 
-<!-- Hero Section - AJIO inspired with model image -->
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-content">
-    <span class="hero-badge">NEW DROP ✨</span>
-    <h1>Everyday Kurtis, <br>On Repeat</h1>
-    <p>Breathable cotton • Effortless style • Custom fits made just for you.</p>
-    <button class="hero-btn" id="exploreBtn">Explore Collection <i class="fas fa-arrow-right"></i></button>
+  <div>
+    <h1>Everyday Kurtis,<br>On Repeat</h1>
+    <p>Breathable cotton • Custom fits</p>
+    <button onclick="scrollToProducts()">Explore</button>
   </div>
-  <img class="hero-image" src="https://images.unsplash.com/photo-1618424181497-157f25b6eaf5?w=400&auto=format" alt="fashion model kurta" onerror="this.src='https://placehold.co/400x500?text=Aritva+Style'">
+  <img src="https://images.unsplash.com/photo-1618424181497-157f25b6eaf5">
 </div>
 
-<!-- Shop By Category - modern roundels -->
-<div class="section">
-  <div class="section-header">
-    <h2>Shop by Category</h2>
-    <a href="#" class="section-link">View all <i class="fas fa-chevron-right"></i></a>
-  </div>
-  <div class="categories-scroll">
-    <div class="cat-card">
-      <img class="cat-img" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=140&auto=format" alt="College wear">
-      <p>College Wear</p>
-    </div>
-    <div class="cat-card">
-      <img class="cat-img" src="https://images.unsplash.com/photo-1583391733956-6c9c8c3e4c8c?w=140&auto=format" alt="Office casuals">
-      <p>Office Casuals</p>
-    </div>
-    <div class="cat-card">
-      <img class="cat-img" src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=140&auto=format" alt="Daily Wear">
-      <p>Daily Wear</p>
-    </div>
-    <div class="cat-card">
-      <img class="cat-img" src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=140&auto=format" alt="Under 999">
-      <p>Under ₹999</p>
-    </div>
-    <div class="cat-card">
-      <img class="cat-img" src="https://images.unsplash.com/photo-1624138784614-87fd1b6528f8?w=140&auto=format" alt="Co-ord sets">
-      <p>Co-ord Sets</p>
-    </div>
-  </div>
-</div>
+<!-- PRODUCTS -->
+<div class="products" id="productGrid"></div>
 
-<!-- Best Sellers Product Grid -->
-<div class="section">
-  <div class="section-header">
-    <h2>Best Sellers</h2>
-    <a href="#" class="section-link">Shop now →</a>
-  </div>
-  <div class="products-grid" id="productsGrid">
-    <!-- Products injected via JS to keep clean but also static fallback -->
-  </div>
-</div>
-
-<!-- Why Choose Aritva (Features) -->
-<div class="section">
-  <div class="section-header">
-    <h2>Why Aritva?</h2>
-  </div>
-  <div class="feature-grid">
-    <div class="feature-item">
-      <i class="fas fa-leaf"></i>
-      <h4>Breathable Fabrics</h4>
-      <p>100% cotton & sustainable blends</p>
-    </div>
-    <div class="feature-item">
-      <i class="fas fa-hand-sparkles"></i>
-      <h4>Handcrafted Quality</h4>
-      <p>Ethically made in India</p>
-    </div>
-    <div class="feature-item">
-      <i class="fas fa-arrows-spin"></i>
-      <h4>Easy Exchange</h4>
-      <p>14-day hassle-free returns</p>
-    </div>
-    <div class="feature-item">
-      <i class="fas fa-truck-fast"></i>
-      <h4>Free Shipping</h4>
-      <p>On orders above ₹1299</p>
-    </div>
-  </div>
-</div>
-
-<!-- WhatsApp Order Section (Myntra style banner conversion) -->
-<div class="section">
-  <div class="contact-panel">
-    <i class="fab fa-whatsapp" style="font-size: 2.5rem; color:#25D366;"></i>
-    <h3>Customize & Order on WhatsApp</h3>
-    <p>Chat with our stylist for size, custom color, or bulk orders. Instant reply.</p>
-    <a class="big-wa-btn" href="https://wa.me/919876543210?text=Hi%20Aritva!%20I%20love%20the%20kurtis%20collection.%20Please%20help%20me%20to%20place%20an%20order." target="_blank">
-      <i class="fab fa-whatsapp"></i> Order via WhatsApp
-    </a>
-  </div>
-</div>
-
-<!-- FOOTER with modern links -->
-<footer>
-  <div class="footer-links">
-    <a href="#">About Aritva</a>
-    <a href="#">Contact Us</a>
-    <a href="#">Shipping Policy</a>
-    <a href="#">Return & Refund</a>
-    <a href="#">Size Guide</a>
-  </div>
-  <div>© 2026 Aritva – Designed for the modern woman | All rights reserved</div>
-</footer>
+<footer>© 2026 Aritva</footer>
 
 <script>
-  // Product Array: each has image (unsplash high quality clothing), name, price, oldprice, discount
-  const products = [
-    {
-      id: 1,
-      name: "Black Sleeveless Cotton Kurti",
-      brand: "Aritva Studio",
-      price: 899,
-      oldPrice: 1499,
-      image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&auto=format",
-      waMsg: "Hi, I want to order Black Sleeveless Cotton Kurti (₹899)"
-    },
-    {
-      id: 2,
-      name: "Purple Flared Lucknowi Kurti",
-      brand: "Aritva Heritage",
-      price: 999,
-      oldPrice: 1899,
-      image: "https://images.unsplash.com/photo-1583391733956-6c9c8c3e4c8c?w=400&auto=format",
-      waMsg: "Hi, I'm interested in Purple Flared Kurti (₹999)"
-    },
-    {
-      id: 3,
-      name: "Floral Print A-Line Kurti",
-      brand: "Aritva Daily",
-      price: 799,
-      oldPrice: 1299,
-      image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&auto=format",
-      waMsg: "Hello! Please help me order Floral Kurti ₹799"
-    },
-    {
-      id: 4,
-      name: "Cotton Straight Kurta Set",
-      brand: "Aritva Fusion",
-      price: 1299,
-      oldPrice: 2499,
-      image: "https://images.unsplash.com/photo-1612336307429-8a2f1b8f4f81?w=400&auto=format",
-      waMsg: "I want to order the Cotton Straight Kurta Set (₹1299)"
-    },
-    {
-      id: 5,
-      name: "Mustard Yellow Anarkali",
-      brand: "Aritva Festive",
-      price: 1499,
-      oldPrice: 2999,
-      image: "https://images.unsplash.com/photo-1618354691551-44c113f4f282?w=400&auto=format",
-      waMsg: "Hi! Booking Mustard Anarkali (₹1499)"
-    },
-    {
-      id: 6,
-      name: "Co-ord Set: Kurta + Palazzos",
-      brand: "Aritva Edit",
-      price: 1799,
-      oldPrice: 3200,
-      image: "https://images.unsplash.com/photo-1583391733956-6c9c8c3e4c8c?w=400&auto=format",
-      waMsg: "Want to order the co-ord set (Kurta+Palazzos) ₹1799"
-    }
-  ];
-  // alternate image for product 6 uniqueness
-  products[5].image = "https://images.unsplash.com/photo-1598032895397-b9472444bf22?w=400&auto=format";
 
-  function renderProducts() {
-    const container = document.getElementById('productsGrid');
-    if (!container) return;
-    container.innerHTML = '';
-    products.forEach(prod => {
-      const discountPercent = Math.round(((prod.oldPrice - prod.price) / prod.oldPrice) * 100);
-      const productDiv = document.createElement('div');
-      productDiv.className = 'product-card';
-      productDiv.innerHTML = `
-        <div class="product-img-wrapper">
-          <img class="product-img" src="${prod.image}" alt="${prod.name}" loading="lazy" onerror="this.src='https://placehold.co/400x500?text=Aritva'">
-          <div class="wishlist-icon" aria-label="Add to wishlist">
-            <i class="far fa-heart"></i>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="brand">${prod.brand}</div>
-          <div class="product-title">${prod.name}</div>
-          <div class="price-row">
-            <span class="current-price">₹${prod.price}</span>
-            <span class="old-price">₹${prod.oldPrice}</span>
-            <span class="discount">(${discountPercent}% OFF)</span>
-          </div>
-          <a href="https://wa.me/919876543210?text=${encodeURIComponent(prod.waMsg)}" target="_blank" class="btn-whatsapp">
-            <i class="fab fa-whatsapp"></i> ORDER NOW
-          </a>
-        </div>
-      `;
-      container.appendChild(productDiv);
-    });
-  }
-  renderProducts();
+// PRODUCTS
+const products=[
+{id:1,name:"Black Cotton Kurti",price:899,old:1499,img:"https://images.unsplash.com/photo-1618354691373-d851c5c3a990"},
+{id:2,name:"Purple Flared Kurti",price:999,old:1899,img:"https://images.unsplash.com/photo-1583391733956-6c9c8c3e4c8c"},
+{id:3,name:"Floral Kurti",price:799,old:1299,img:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf"},
+{id:4,name:"Kurta Set",price:1299,old:2499,img:"https://images.unsplash.com/photo-1612336307429-8a2f1b8f4f81"}
+];
 
-  // update all WhatsApp buttons in categories? also for any extra dynamic.
-  // Additionally we want to unify the general WhatsApp chat button to same number.
-  const whatsappBaseNumber = "919876543210"; // you can replace with actual number, kept format as per requirement.
-  const allWAButtons = document.querySelectorAll('.btn-whatsapp, .big-wa-btn');
-  // Ensure main chat button uses same number (already done but adjust any custom)
-  const mainChatBtn = document.querySelector('.big-wa-btn');
-  if (mainChatBtn) {
-    mainChatBtn.href = `https://wa.me/${whatsappBaseNumber}?text=Hi%20Aritva!%20I%20want%20to%20explore%20your%20collection%20and%20place%20an%20order.`;
-  }
-  // For any other product card we already used wa.me/919876543210 in static order links.
-  // But we also need to update all product buttons that might have been built - they already use same number.
-  // Also for hero explore button -> scroll to Best Sellers
-  const exploreBtn = document.getElementById('exploreBtn');
-  if (exploreBtn) {
-    exploreBtn.addEventListener('click', () => {
-      const bestSellerSection = document.querySelector('.section .products-grid');
-      if (bestSellerSection) {
-        bestSellerSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
-  }
-  // small interactive: adding heart icon alert (mock)
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('.wishlist-icon')) {
-      e.preventDefault();
-      alert('❤️ Add to wishlist — Sign in to save your favorites');
-    }
+// CART
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+
+// RENDER PRODUCTS
+function render(list){
+  const grid=document.getElementById("productGrid");
+  grid.innerHTML="";
+  list.forEach(p=>{
+    grid.innerHTML+=`
+    <div class="card">
+      <img src="${p.img}">
+      <div class="info">
+        <h4>${p.name}</h4>
+        <div class="price">₹${p.price} <span class="old">₹${p.old}</span></div>
+        <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
+      </div>
+    </div>`;
   });
-  // search placeholder functionality (demo)
-  const searchInput = document.querySelector('.search-bar input');
-  if (searchInput) {
-    searchInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        alert(`✨ Searching for "${searchInput.value}" — more styles coming soon!`);
-      }
-    });
+}
+render(products);
+
+// ADD TO CART
+function addToCart(id){
+  const product=products.find(p=>p.id===id);
+  cart.push(product);
+  localStorage.setItem("cart",JSON.stringify(cart));
+  updateCart();
+  alert("Added to cart");
+}
+
+// UPDATE COUNT
+function updateCart(){
+  document.getElementById("cartCount").innerText=cart.length;
+}
+updateCart();
+
+// SEARCH
+document.getElementById("search").addEventListener("input",(e)=>{
+  const val=e.target.value.toLowerCase();
+  const filtered=products.filter(p=>p.name.toLowerCase().includes(val));
+  render(filtered);
+});
+
+// CART VIEW
+document.getElementById("cartIcon").addEventListener("click",()=>{
+  if(cart.length===0){
+    alert("Cart is empty");
+  }else{
+    let msg="Your Cart:\n";
+    cart.forEach(i=>msg+=`${i.name} - ₹${i.price}\n`);
+    alert(msg);
   }
-  // make category images hover look alive
-  const catCards = document.querySelectorAll('.cat-card');
-  catCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const category = card.querySelector('p')?.innerText || '';
-      alert(`🛍️ Explore ${category} collection — Coming soon on Aritva!`);
-    });
-  });
+});
+
+// SCROLL
+function scrollToProducts(){
+  document.getElementById("productGrid").scrollIntoView({behavior:"smooth"});
+}
+
 </script>
+
 </body>
 </html>
